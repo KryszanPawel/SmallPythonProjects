@@ -1,11 +1,18 @@
 import fileinput
 
 
+def define_file() -> list:
+    """Extracts lines from input file"""
+    # extract lines from input file and contain strings in list without "\n" and "\r" signs.
+    file = [line.replace('\n', '').replace('\r', '') for line in fileinput.input()]
+    return file
+
+
 class Permutation:
 
     def __init__(self):
         """ Initializes Permutation Object with path to .in file """
-        self.file = self.define_file()
+        self.file = define_file()
         self.n = int(self.file[0])  # number of elephants
         self.mass_list = [int(mass) for mass in self.file[1].split(' ')]  # list of elephants masses
         self.actual = [int(pos) - 1 for pos in self.file[2].split(' ')]  # actual arrangement
@@ -14,14 +21,6 @@ class Permutation:
         self.cycles = self.define_cycles()  # creates permutation cycles
         self.parameters, self.minimum = self.define_cycles_parameters()  # list of cycles parameters and min weight
         self.result = self.calculate_result()  # lowest cost of rearrangement
-
-    def define_file(self) -> list:
-        """Extracts lines from input file"""
-        # extract lines from input file and contain strings in list without "\n" and "\r" signs.
-        file = [line.replace('\n', '').replace('\r', '') for line in fileinput.input()]
-        return file
-
-
 
     def create_permutation(self) -> list:
         """Returns list of permutation values"""
