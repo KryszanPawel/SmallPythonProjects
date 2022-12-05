@@ -10,7 +10,7 @@ def define_file() -> list:
 
 class Permutation:
 
-    def __init__(self, file):
+    def __init__(self, file: list):
         """ Initializes Permutation Object with path to .in file """
         self.file = file
         self.n = int(self.file[0])  # number of elephants
