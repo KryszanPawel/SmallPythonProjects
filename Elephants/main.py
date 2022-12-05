@@ -10,9 +10,9 @@ def define_file() -> list:
 
 class Permutation:
 
-    def __init__(self):
+    def __init__(self, file):
         """ Initializes Permutation Object with path to .in file """
-        self.file = define_file()
+        self.file = file
         self.n = int(self.file[0])  # number of elephants
         self.mass_list = [int(mass) for mass in self.file[1].split(' ')]  # list of elephants masses
         self.actual = [int(pos) - 1 for pos in self.file[2].split(' ')]  # actual arrangement
@@ -73,6 +73,6 @@ class Permutation:
 
 if __name__ == "__main__":
 
-    solver = Permutation()
+    solver = Permutation(define_file())
     print(solver.result)
 
